@@ -1,2 +1,4 @@
 /.vs
 /out
+/.venv
+__pycache__

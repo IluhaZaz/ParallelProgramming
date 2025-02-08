@@ -5,10 +5,9 @@
 using namespace std;
 
 
-template <typename T>
 class MatrixMultiplicator {
 public:
-	static vector<vector<T>> multiply(vector<vector<T>> m1, vector<vector<T>> m2) {
+	static vector<vector<float>> multiply(vector<vector<float>> m1, vector<vector<float>> m2) {
 		int rows_1 = m1.size();
 		int cols_1 = m1[0].size();
 		int rows_2 = m2.size();
@@ -24,7 +23,7 @@ public:
 			return {};
 		}
 
-		vector<vector<T>> res(rows_1, vector<int>(cols_2, 0));
+		vector<vector<float>> res(rows_1, vector<float>(cols_2, 0));
 
 		for (int i = 0; i < rows_1; ++i) {
 			for (int j = 0; j < cols_2; ++j) {
