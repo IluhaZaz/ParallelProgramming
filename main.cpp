@@ -1,11 +1,20 @@
 #include "matrixMultiply.cpp"
 #include "IOtoFile.cpp"
 
+#include <chrono>
+
+
+using namespace std;
+
 
 void main() {
-	auto res = FileHandler::read_file("C:\\Users\\Acer\\Documents\\ParallelProgramming\\files\\input.txt");
+	auto input = FileHandler::read_input_file("C:\\Users\\Acer\\Documents\\ParallelProgramming\\files\\input.txt");
 
-	auto r = MatrixMultiplicator::multiply(res.first, res.second);
+	auto start = chrono::high_resolution_clock::now();
+	auto r = MatrixMultiplicator::multiply(input.first, input.second);
+	auto end = chrono::high_resolution_clock::now();
 
-	FileHandler::write_file(r, "C:\\Users\\Acer\\Documents\\ParallelProgramming\\files\\output.txt");
+	double duration = chrono::duration<double>(end - start).count();
+
+	FileHandler::write_output_file(r, duration, "C:\\Users\\Acer\\Documents\\ParallelProgramming\\files\\output.txt");
 }

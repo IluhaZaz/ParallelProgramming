@@ -8,7 +8,7 @@ using namespace std;
 
 class FileHandler {
 public:
-	static pair<vector<vector<float>>, vector<vector<float>>> read_file(string path) {
+	static pair<vector<vector<float>>, vector<vector<float>>> read_input_file(string path) {
 		ifstream input_file(path);
 
         if (input_file.is_open()) {
@@ -43,7 +43,7 @@ public:
         return matrix;
     }
 
-    static void write_file(vector<vector<float>>& matrix, string path) {
+    static void write_output_file(vector<vector<float>>& matrix, double time, string path) {
         ofstream output_file(path);
 
         if (output_file.is_open()) {
@@ -54,6 +54,8 @@ public:
                 output_file << '\n';
             }
         }
+        output_file << '\n';
+        output_file << time;
 
         output_file.close();
     }

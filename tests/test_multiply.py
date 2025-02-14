@@ -18,12 +18,12 @@ data = [
                                                 )
 def test_matrix_multiply(m1: list[list[float]], m2: list[list[float]]):
 
-    FileHandler.write_matrices(m1, m2, "files\\input.txt")
+    FileHandler.write_input_file(m1, m2, "files\\input.txt")
 
     prog = Popen("out\\build\\x64-Debug\\main.exe", stdin=PIPE)
     prog.wait()
 
-    res1 = FileHandler.read_matrix("files\\output.txt")
+    res1, time = FileHandler.read_output_file("files\\output.txt")
 
     res2 = array(m1) @ array(m2)
 
@@ -42,11 +42,11 @@ data_wrong = [
                                                                     ]
                                                                     )
 def test_matrix_multiply_wrong(m1: list[list[float]], m2: list[list[float]], expected_val: list[list[float]]):
-    FileHandler.write_matrices(m1, m2, "files\\input.txt")
+    FileHandler.write_input_file(m1, m2, "files\\input.txt")
 
     prog = Popen("out\\build\\x64-Debug\\main.exe", stdin=PIPE)
     prog.wait()
 
-    res = FileHandler.read_matrix("files\\output.txt")
+    res, time = FileHandler.read_output_file("files\\output.txt")
 
-    assert res.tolist() == []
+    assert res.tolist() == expected_val
