@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <omp.h>
 
 
 using namespace std;
@@ -25,7 +26,8 @@ public:
 		}
 
 		vector<vector<float>> res(rows_1, vector<float>(cols_2, 0));
-
+		
+		#pragma omp parallel for schedule(dynamic)
 		for (int i = 0; i < rows_1; ++i) {
 			for (int j = 0; j < cols_2; ++j) {
 				for (int k = 0; k < rows_2; ++k) {

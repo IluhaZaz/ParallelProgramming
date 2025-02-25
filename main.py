@@ -10,7 +10,7 @@ from file_handler import FileHandler
 EXPEREMENT_COUNT = 10
 
 times = []
-sizes = [i*100 for i in range(1, 11)]
+sizes = [i*300 for i in range(1, 11)]
 
 for matr_size in sizes:
     time = 0
@@ -30,7 +30,7 @@ for matr_size in sizes:
         if not allclose(res1, res2):
             raise ValueError("Wrong answer")
     times.append(time/EXPEREMENT_COUNT)
-    print(times)
+    print(f"{matr_size}: {times}")
 
 
 plt.plot(sizes, times)
