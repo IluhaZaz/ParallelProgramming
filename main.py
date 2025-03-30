@@ -7,10 +7,10 @@ from numpy import array, allclose
 
 from file_handler import FileHandler
 
-EXPEREMENT_COUNT = 10
+EXPEREMENT_COUNT = 3
 
 times = []
-sizes = [i*100 for i in range(1, 11)]
+sizes = [i*200 for i in range(1, 11)]
 
 for matr_size in sizes:
     time = 0
@@ -19,7 +19,7 @@ for matr_size in sizes:
         m2 = np.random.rand(matr_size, matr_size)
 
         FileHandler.write_input_file(m1, m2, "files\\input.txt")
-        prog = Popen("out\\build\\x64-Debug\\main.exe", stdin=PIPE)
+        prog = Popen("out\\build\\x64-Release\\main.exe", stdin=PIPE)
         prog.wait()
 
         res1, t = FileHandler.read_output_file("files\\output.txt")
