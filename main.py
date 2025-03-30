@@ -7,10 +7,10 @@ from numpy import array, allclose
 
 from file_handler import FileHandler
 
-EXPEREMENT_COUNT = 1
+EXPEREMENT_COUNT = 5
 
 times = []
-sizes = [i*300 for i in range(1, 11)]
+sizes = [i*300 for i in range(1, 16)]
 
 for matr_size in sizes:
     time = 0

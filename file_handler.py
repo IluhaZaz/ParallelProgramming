@@ -39,7 +39,7 @@ class FileHandler:
                     FileHandler.write_matrix(m2, f)
                 break
             except (OSError, IOError) as e:
-                print(f"Error file friting to file {attempt}")
+                print(f"Error while writing to file {attempt}")
                 if attempt == attempts - 1:
                     raise
                 time.sleep(delay)
