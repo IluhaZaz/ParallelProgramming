@@ -1,12 +1,12 @@
+#include <mpi.h>
 #include <vector>
 #include <iostream>
-#include <mpi.h>
 
 using namespace std;
 
 class MatrixMultiplicator {
 public:
-    static vector<vector<float>> multiply(const vector<vector<float>>& m1, const vector<vector<float>>& m2) 
+    static vector<vector<float> > multiply(const vector<vector<float> >& m1, const vector<vector<float> >& m2) 
     {
         int world_size, world_rank;
         MPI_Comm_size(MPI_COMM_WORLD, &world_size);
@@ -109,7 +109,7 @@ public:
             }
         }
 
-        vector<vector<float>> local_result(local_m1.size(), vector<float>(cols_2, 0));
+        vector<vector<float> > local_result(local_m1.size(), vector<float>(cols_2, 0));
         for (size_t i = 0; i < local_m1.size(); ++i) 
         {
             for (int k = 0; k < rows_2; ++k) 
@@ -122,7 +122,7 @@ public:
             }
         }
 
-        vector<vector<float>> res;
+        vector<vector<float> > res;
         if (world_rank == 0) 
         {
             res.resize(rows_1, vector<float>(cols_2));
