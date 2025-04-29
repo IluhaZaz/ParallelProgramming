@@ -1,5 +1,5 @@
 #include "matrixMultiply.cpp"
-#include "IOtoFile.cpp"
+#include "MatrixGen.cpp"
 #include <chrono>
 #include <mpi.h>
 
@@ -8,12 +8,15 @@ using namespace std;
 int main(int argc, char** argv) {
     MPI_Init(&argc, &argv);
 
+    int size = atoi(argv[1]);
+
     int world_rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
     pair<vector<vector<float>>, vector<vector<float>>> input;
     if (world_rank == 0) {
-        input = FileHandler::read_input_file("C:\\Users\\Acer\\Documents\\ParallelProgramming\\files\\input.txt");
+        input.first = generateRandomMatrix(size);
+        input.second = generateRandomMatrix(size);
     }
 
     auto start = chrono::high_resolution_clock::now();
@@ -22,7 +25,7 @@ int main(int argc, char** argv) {
 
     if (world_rank == 0) {
         double duration = chrono::duration<double>(end - start).count();
-        FileHandler::write_output_file(r, duration, "C:\\Users\\Acer\\Documents\\ParallelProgramming\\files\\output.txt");
+        cout << duration << endl;
     }
 
     MPI_Finalize();

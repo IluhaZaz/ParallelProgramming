@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.11)
 project(matrix_multiply LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
 find_package(MPI REQUIRED COMPONENTS CXX)
 
