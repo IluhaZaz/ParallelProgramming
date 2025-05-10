@@ -15,7 +15,7 @@
 2) Перенес все необходимые файлы
 ![Картинка](images/files_move.png)
 
-3) Скомпилировал все исходные файлы в один командой `mpicxx -std=c++11 main.cpp -o main`, предварительно подключим `MPI` - `module load intel/mpi4`
+3) Скомпилировал все исходные файлы в один командой `mpicxx -std=c++11 -O3 -ffast-math main.cpp -o main`, предварительно подключим `MPI` - `module load intel/mpi4`
 ![Картинка](images/compile.png)
 
 4) Написал скрипт для постановки задачи в планировщик 'Slurm'
